@@ -47,3 +47,19 @@ func TestReGeo(t *testing.T) {
 		}
 	}
 }
+
+func TestIpLoc(t *testing.T) {
+	o := []APIQuery{
+		&amap.IpLocRequest{
+			IP: "114.247.50.2",
+		},
+	}
+
+	for _, item := range o {
+		if data, err := Execute(item); err != nil {
+			t.Errorf("ip location(%v) error %s", item, err.Error())
+		} else {
+			fmt.Println(string(data))
+		}
+	}
+}
