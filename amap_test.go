@@ -63,3 +63,19 @@ func TestIpLoc(t *testing.T) {
 		}
 	}
 }
+
+func TestWeather(t *testing.T) {
+	o := []APIQuery{
+		&amap.WeatherRequest{
+			City: "保定市",
+		},
+	}
+
+	for _, item := range o {
+		if data, err := Execute(item); err != nil {
+			t.Errorf("weather (%v) error %s", item, err.Error())
+		} else {
+			fmt.Println(string(data))
+		}
+	}
+}
